@@ -1,0 +1,68 @@
+package DemoData;
+
+//Constant
+
+message Constant
+{
+	enum Command
+	{
+		CMD_USER_REGISTER = 0x0100;
+		CMD_MESSAGE_SEND = 0x0201;
+		CMD_MESSAGE_NOTIFY = 0x0202;
+	}
+
+	enum Result
+	{
+		SUCCESS = 0;
+		//common error
+		ERROR_PARAMS = 1;
+		ERROR_SERVER = 2;
+		ERROR_USERNAME_EXIST = 3;
+		ERROR_USERNAME_NOT_EXIST = 4;
+		ERROR_FORBIDDEN = 5;
+	}
+}
+
+//Data
+
+message MessageInfo
+{
+	optional string from_id = 1;
+	optional string content = 2;
+}
+
+//Protocol
+
+//Common Packet
+
+message PacketHeader
+{
+	optional uint64 id = 1;
+	optional uint32 version = 2;
+	optional uint32 command = 3;	//Constant.Command
+	optional uint32 result = 4;	//Constant.Result
+	optional uint32 timestamp = 5;
+}
+
+//CMD_USER_REGISTER
+
+message UserRegisterRequest
+{
+	optional string username = 1;
+}
+
+
+//CMD_MESSAGE_SEND
+
+message MessageSendRequest
+{
+	repeated string targets = 1;
+	optional MessageInfo message = 2;
+}
+
+//CMD_MESSAGE_NOTIFY
+
+message MessageNotifyRequest
+{
+	optional MessageInfo message = 1;
+}

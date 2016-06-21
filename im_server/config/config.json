@@ -1,0 +1,33 @@
+{
+	"DEBUG": false,
+	"TEST": false,
+	"LOGGER_CONFIG": {
+		"log_dir": "./log/"
+	},
+	"WORKER_COUNT": 5,
+	"LISTEN_ENDPOINTS": [{
+		"address": "0.0.0.0",
+		"port": 18800
+	}],
+	"WORK_ENDPOINT": {
+		"address": "127.0.0.1",
+		"port": 18801
+	},
+	"CONNECTION_ID_RANDOM_PADDING": false,
+	"TCP_MAX_BUFFER_SIZE": 262144,
+	"TCP_MAX_PACKET_SIZE": 262144,
+	"TCP_MAX_QUEUE_SIZE": 10000,
+	"ENABLE_KEEP_ALIVE": true,
+	"KEEP_ALIVE_OPT": {
+		"timeout": 30,
+		"interval": 5,
+		"count": 5
+	},
+	"CACHE_SERVERS": {
+		"session": {
+			"type": "memcached",
+			"host": "139.59.244.132",
+			"port": 11211
+		}
+	}
+}
